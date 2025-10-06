@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mở Camera Trước</title>
+</head>
+<body>
+  <h2>Camera trước của bạn</h2>
+  <video id="video" autoplay playsinline></video>
+
+  <script>
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user" }, // "user" là camera trước
+      audio: false
+    })
+    .then(stream => {
+      document.getElementById('video').srcObject = stream;
+    })
+    .catch(error => {
+      console.error("Không thể mở camera:", error);
+    });
+  </script>
+</body>
+</html>
